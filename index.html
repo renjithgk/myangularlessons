@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
+    <script src="main.js"></script>
+    <script src="app.route.js"></script>
+    <script src="Feature1/Service1.js"></script>
+    <script src="Feature1/Controller1.js"></script>
+    <script src="Feature2/Controller2.js"></script>
+</head>
+<body>
+
+    <a href="#Controller1">Controller 1</a>
+    <a href="#Controller2">Controller 2</a>
+    <a href="#Controller3">Controller 3</a>
+
+    <br />
+    <br />
+
+    {{ 2 + 5}}
+
+    <br />
+    <br />
+
+    <div ng-controller="Controller1 as vm">
+        {{vm.Title}}
+    </div>
+
+    <br />
+    <br />
+
+
+    <div ng-controller="Controller2 as vm">
+        {{vm.Title}}
+    </div>
+
+    <br />
+    <br />
+
+    <div ng-view></div>
+
+</body>
+</html>
