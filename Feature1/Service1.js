@@ -7,12 +7,12 @@ app.service('Service1', function ($http, $q) {
         getUserDetails: getUserDetails
     };
 
-    function getUserDetails() {
-        var username = 'renjithgk'
+    function getUserDetails(username) {
+        var myusername = username
         var deffered = $q.defer();
-        $http.get("https://api.github.com/users/" + username)
+        $http.get("https://api.github.com/users/" + myusername)
             .then(function (response) {
-                return response.data
+                deffered.resolve(response)
             })
             .catch(function (error) {
                 deffered.reject(error)
