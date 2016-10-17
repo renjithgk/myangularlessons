@@ -31,4 +31,9 @@ SELECT SUM(Sales) FROM Store_Information WHERE EXISTS (SELECT * FROM Geography W
 
 SELECT SUM (a1.Sales) FROM Store_Information a1 WHERE a1.Store_Name IN (SELECT Store_Name FROM Geography a2 WHERE a2.Store_Name = a1.Store_Name);
 
+SELECT DISTINCT '" + date + @"'+'-" + i.Month.ToString("D2") + @"-" + i.Year + @"' [Date], (SELECT client_name FROM client WHERE id = client_id) Client,
+LEFT((SELECT (SELECT name FROM employee WHERE employee.id = staff_id) + ', ' AS [text()] FROM Deployment WHERE day_" + date + @" IS NOT NULL AND day_" + date + @" NOT IN ('','M', 'C', 'L', 'U', 'A', 'O') AND month = d.month AND year = d.year AND day_night = 'D' AND client_id = d.client_id FOR XML PATH ('')), LEN((SELECT (SELECT name FROM employee WHERE employee.id = staff_id) + ', ' AS [text()] FROM Deployment WHERE day_" + date + @" IS NOT NULL AND day_" + date + @" NOT IN ('','M', 'C', 'L', 'U', 'A', 'O') AND month = d.month AND year = d.year AND day_night = 'D' AND client_id = d.client_id FOR XML PATH ('')))-1) [DayEmployees],
+LEFT((SELECT (SELECT name FROM employee WHERE employee.id = staff_id) + ', ' AS [text()] FROM Deployment WHERE day_" + date + @" IS NOT NULL AND day_" + date + @" NOT IN ('','M', 'C', 'L', 'U', 'A', 'O') AND month = d.month AND year = d.year AND day_night = 'N' AND client_id = d.client_id FOR XML PATH ('')), LEN((SELECT (SELECT name FROM employee WHERE employee.id = staff_id) + ', ' AS [text()] FROM Deployment WHERE day_" + date + @" IS NOT NULL AND day_" + date + @" NOT IN ('','M', 'C', 'L', 'U', 'A', 'O') AND month = d.month AND year = d.year AND day_night = 'N' AND client_id = d.client_id FOR XML PATH ('')))-1) [NightEmployees]
+FROM Deployment d WHERE day_" + date + @" IS NOT NULL AND day_" + date + @" <> '' AND month = '" + i.Month + @"' AND year = '" + i.Year + @"'")
+
 
