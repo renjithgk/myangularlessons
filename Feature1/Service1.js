@@ -51,3 +51,22 @@ app.factory('myFactory', function () {
     }
 });
 
+
+//Display a new message after two seconds:
+//var app = angular.module('myApp', []);
+//app.controller('myCtrl', function ($scope, $timeout) {
+//    $scope.myHeader = "Hello World!";
+//    $timeout(function () {
+//        $scope.myHeader = "How are you today?";
+//    }, 2000);
+//});
+
+
+//Display the time every second:
+//var app = angular.module('myApp', []);
+//app.controller('myCtrl', function ($scope, $interval) {
+//    $scope.theTime = new Date().toLocaleTimeString();
+//    $interval(function () {
+//        $scope.theTime = new Date().toLocaleTimeString();
+//    }, 1000);
+//})
